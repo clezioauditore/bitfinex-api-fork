@@ -419,13 +419,18 @@ rest.prototype.margin_infos = function (cb) {
  'address' :address (destination address for withdrawal)
  */
 
-rest.prototype.withdraw = function (withdraw_type, walletselected, amount, address, cb) {
+rest.prototype.withdraw = function (withdraw_type, walletselected, amount, address, paymentid, cb) {
   const params = {
     withdraw_type,
     walletselected,
     amount,
     address
   }
+
+  if(withdraw_type == 'ripple'){
+    params.payment_id = paymentid
+  }
+
   return this.make_request('withdraw', params, cb)
 }
 

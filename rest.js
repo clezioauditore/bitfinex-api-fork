@@ -341,11 +341,12 @@ rest.prototype.past_trades = function (symbol, options, cb) {
   return this.make_request('mytrades', params, cb)
 }
 
-rest.prototype.new_deposit = function (currency, method, wallet_name, cb) {
+rest.prototype.new_deposit = function (currency, method, wallet_name, renew, cb) {
   const params = {
     currency,
     method,
-    wallet_name
+    wallet_name,
+    renew
   }
   return this.make_request('deposit/new', params, cb)
 }
